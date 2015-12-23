@@ -1,5 +1,6 @@
 package com.example;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -11,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class UiApplication {
+
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+        return user;
+    }
 
     @RequestMapping("/resource")
     public Map<String, Object> home() {

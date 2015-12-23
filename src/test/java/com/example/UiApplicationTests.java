@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = UiApplication.class)
 @WebAppConfiguration
-public class DemoApplicationTests {
+public class UiApplicationTests {
 
 	@Test
 	public void contextLoads() {
