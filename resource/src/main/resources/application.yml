@@ -1,0 +1,15 @@
+server:
+    port: 9000
+spring:
+    redis:
+#       Configure for running Redis with Docker Toolbox.
+        host: 192.168.99.100
+#        password: secret
+#        port: 6379
+security:
+    sessions: NEVER
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
+      session: TRACE

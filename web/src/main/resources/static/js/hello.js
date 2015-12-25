@@ -1,17 +1,17 @@
-angular.module('hello', ['ngRoute']).config(function ($routeProvider, $httpProvider) {
+angular.module('hello', ['ngRoute']).config(
+        function ($routeProvider, $httpProvider) {
 
-    $routeProvider.when('/', {
-        templateUrl: 'home.html',
-        controller: 'home'
-    }).when('/login', {
-        templateUrl: 'login.html',
-        controller: 'navigation'
-    }).otherwise('/');
+            $routeProvider.when('/', {
+                templateUrl: 'home.html',
+                controller: 'home'
+            }).when('/login', {
+                templateUrl: 'login.html',
+                controller: 'navigation'
+            }).otherwise('/');
 
-    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+            $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-}).controller(
-        'navigation',
+        }).controller('navigation',
         function ($rootScope, $scope, $http, $location, $route) {
 
             $scope.tab = function (route) {
@@ -71,8 +71,17 @@ angular.module('hello', ['ngRoute']).config(function ($routeProvider, $httpProvi
                 });
             };
 
-        }).controller('home', function ($scope, $http) {
-    $http.get('/resource/').success(function (data) {
-        $scope.greeting = data;
-    });
-});
+        }).controller('home',
+        function ($scope, $http) {
+            $http.get('token').success(function (token) {
+                $http({
+                    url: 'http://localhost:9000',
+                    method: 'GET',
+                    headers: {
+                        'X-Auth-Token': token.token
+                    }
+                }).success(function (data) {
+                    $scope.greeting = data;
+                });
+            });
+        });
