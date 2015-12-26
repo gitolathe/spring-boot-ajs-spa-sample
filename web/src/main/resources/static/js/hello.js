@@ -75,7 +75,7 @@ angular.module('hello', ['ngRoute']).config(
         function ($scope, $http) {
             $http.get('token').success(function (token) {
                 $http({
-                    url: 'http://localhost:9000',
+                    url: 'resource/',
                     method: 'GET',
                     headers: {
                         'X-Auth-Token': token.token
