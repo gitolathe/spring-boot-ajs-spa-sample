@@ -1,17 +1,10 @@
 server:
-    address: 127.0.0.1
     port: 9000
-spring:
-    redis:
-#       Configure for running Redis with Docker Toolbox.
-        host: 192.168.99.100
-#        password: secret
-#        port: 6379
+    address: 127.0.0.1
 security:
-    sessions: NEVER
     oauth2:
         resource:
-            userInfoUri: http://localhost:9999/uaa/user    
+            userInfoUri: http://localhost:9999/uaa/user
 logging:
   level:
     org.springframework:
