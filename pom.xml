@@ -6,12 +6,13 @@
     <artifactId>spring-boot-ajs-spa-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Spring Security Angular Samples</name>
+    <name>Secure Single Page Application Modules</name>
     <description>Spring and Angular JS: A Secure Single Page Application</description>
 
     <modules>
         <module>web</module>
         <module>resource</module>
+        <module>authserver</module>
     </modules>
 	
     <build>
