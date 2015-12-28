@@ -1,20 +1,21 @@
-security:
-    user:
-        password: password
-    oauth2:
-      client:
-        accessTokenUri: http://localhost:9999/uaa/oauth/token
-        userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
-        clientId: acme
-        clientSecret: acmesecret
-      resource:
-        userInfoUri: http://localhost:9999/uaa/user
+debug: true
+
 spring:
-    redis:
-#       Configure for running Redis with Docker Toolbox.
-        host: 192.168.99.100
-#        password: secret
-#        port: 6379
+  aop:
+    proxy-target-class: true
+
+security:
+  user:
+    password: password
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:9999/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
+    resource:
+      userInfoUri: http://localhost:9999/uaa/user
+
 zuul:
   routes:
     resource:
@@ -23,8 +24,8 @@ zuul:
     user:
       path: /user/**
       url: http://localhost:9999/uaa/user
+
 logging:
   level:
-    org.springframework:
-      security: DEBUG
-      session: TRACE        
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG

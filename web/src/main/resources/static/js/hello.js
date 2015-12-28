@@ -1,12 +1,10 @@
 angular.module('hello', ['ngRoute']).config(
-        function ($routeProvider, $httpProvider) {
+        function ($routeProvider) {
 
             $routeProvider.when('/', {
                 templateUrl: 'home.html',
                 controller: 'home'
             }).otherwise('/');
-
-            $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         }).controller('navigation',
         function ($rootScope, $scope, $http, $location, $route) {
@@ -15,31 +13,15 @@ angular.module('hello', ['ngRoute']).config(
                 return $route.current && route === $route.current.controller;
             };
 
-            var authenticate = function (credentials, callback) {
-
-                var headers = credentials ? {
-                    authorization: "Basic "
-                            + btoa(credentials.username + ":"
-                                    + credentials.password)
-                } : {};
-
-                $http.get('user', {
-                    headers: headers
-                }).success(function (data) {
-                    if (data.name) {
-                        $rootScope.authenticated = true;
-                    } else {
-                        $rootScope.authenticated = false;
-                    }
-                    callback && callback($rootScope.authenticated);
-                }).error(function () {
+            $http.get('user').success(function (data) {
+                if (data.name) {
+                    $rootScope.authenticated = true;
+                } else {
                     $rootScope.authenticated = false;
-                    callback && callback(false);
-                });
-
-            };
-
-            authenticate();
+                }
+            }).error(function () {
+                $rootScope.authenticated = false;
+            });
 
             $scope.credentials = {};
 
@@ -55,15 +37,7 @@ angular.module('hello', ['ngRoute']).config(
 
         }).controller('home',
         function ($scope, $http) {
-            $http.get('token').success(function (token) {
-                $http({
-                    url: 'resource/',
-                    method: 'GET',
-                    headers: {
-                        'X-Auth-Token': token.token
-                    }
-                }).success(function (data) {
-                    $scope.greeting = data;
-                });
+            $http.get('resource/').success(function (data) {
+                $scope.greeting = data;
             });
         });

@@ -31,11 +31,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>    
+        </dependency>
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
@@ -45,36 +45,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <artifactId>groovy-all</artifactId>
-            <groupId>org.codehaus.groovy</groupId>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <scope>test</scope>
-            <version>2.44.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.opera</groupId>
-            <artifactId>operadriver</artifactId>
-            <scope>test</scope>
-            <version>1.5</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-remote-driver</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-            <version>4.11</version>
-        </dependency>
     </dependencies>
-	
+
     <build>
         <plugins>
             <plugin>
@@ -84,7 +56,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -109,9 +80,9 @@
                 <artifactId>groovy-eclipse-compiler</artifactId>
                 <version>2.9.2-01</version>
                 <extensions>true</extensions>
-            </plugin>        
+            </plugin>
         </plugins>
     </build>
-	
+
 
 </project>
